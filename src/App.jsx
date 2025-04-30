@@ -1,15 +1,17 @@
 import { useState, useEffect, useRef } from 'react';
-import { Box, Typography, AppBar, Toolbar } from '@mui/material';
+import { Box, Typography, AppBar, Toolbar, IconButton } from '@mui/material';
 import Sidebar from './components/Sidebar';
 import RoomDataPanel from './components/RoomDataPanel';
 import notificationSound from './assets/sounds/notification.wav';
 import VolumeUpIcon from '@mui/icons-material/VolumeUp';
+import VolumeOffIcon from '@mui/icons-material/VolumeOff';
 
 const App = () => {
   const [selectedRoom, setSelectedRoom] = useState('Room1');
   const [sensorData, setSensorData] = useState(null);
   const [unlocked, setUnlocked] = useState(false);
   const [alertsActive, setAlertsActive] = useState(false); // Track if any alert is active
+  const [isMuted, setIsMuted] = useState(false);
   const notificationAudioRef = useRef(null);
 
   // Fetch sensor data
@@ -54,8 +56,8 @@ const App = () => {
 
   // Function to play notification sound in a loop
   const playNotificationSound = () => {
-    if (notificationAudioRef.current) {
-      notificationAudioRef.current.loop = true; // Loop the sound
+    if (notificationAudioRef.current && !isMuted) {
+      notificationAudioRef.current.loop = true;
       notificationAudioRef.current.play();
     }
   };
@@ -64,7 +66,17 @@ const App = () => {
   const stopNotificationSound = () => {
     if (notificationAudioRef.current) {
       notificationAudioRef.current.pause();
-      notificationAudioRef.current.currentTime = 0; // Reset sound
+      notificationAudioRef.current.currentTime = 0;
+    }
+  };
+
+  // Toggle mute state
+  const toggleMute = () => {
+    setIsMuted(!isMuted);
+    if (!isMuted) {
+      stopNotificationSound();
+    } else if (alertsActive) {
+      playNotificationSound();
     }
   };
 
@@ -99,6 +111,13 @@ const App = () => {
         <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>
           Dashboard
         </Typography>
+        <IconButton 
+          color="inherit" 
+          onClick={toggleMute}
+          sx={{ mr: 2 }}
+        >
+          {isMuted ? <VolumeOffIcon /> : <VolumeUpIcon />}
+        </IconButton>
       </Toolbar>
     </AppBar>
     <Box display="flex" flex={1} sx={{ overflow: 'hidden' }}>

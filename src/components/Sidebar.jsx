@@ -7,7 +7,7 @@ const rooms = ['Room1', 'Room2', 'Room3'];
 const Sidebar = ({ selectedRoom, setSelectedRoom, alert }) => {
   return (
     <Box
-      minWidth={180}
+      minWidth={120}
       maxWidth={220}
       flex={1}
       bgcolor="#2c3e50"
