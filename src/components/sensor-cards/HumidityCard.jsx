@@ -56,7 +56,7 @@ const HumidityCard = ({ data, roomId }) => {
             needleTransition="easeElastic"
             paddingHorizontal={0}
             paddingVertical={0}
-            customSegmentStops={[0, 20, 30, 50, 70]}
+            customSegmentStops={[0, 15, 25, 50, 70]}
   segmentColors={[
     "#ffa500", // 0°C - 20°C: Cold
     "#ffff00", // 20°C - 22°C: Cool
