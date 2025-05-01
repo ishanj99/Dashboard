@@ -21,25 +21,34 @@ const HeartbeatCard = ({ data, roomId }) => {
           alignItems="center"
           
         >
-          <ReactSpeedometer
-            value={data.heartbeat}
-            minValue={40}
-            maxValue={180}
-            segments={7}
-            needleColor="#345243"
-            startColor="#00ff00"
-            endColor="#ff0000"
-            needleHeightRatio={0.7}
-            width={200}
-            height={150}
-            textColor="#000000"
-            valueText={`${data.heartbeat} L/min`}
-            ringWidth={20}
-            needleTransitionDuration={1000}
-            needleTransition="easeElastic"
-            paddingHorizontal={0}
-            paddingVertical={0}
-          />
+<ReactSpeedometer
+  value={data.heartbeat}
+  minValue={0}
+  maxValue={180}
+  needleColor="#345243"
+  needleHeightRatio={0.7}
+  width={200}
+  height={150}
+  textColor="#000000"
+  valueText={`${data.heartbeat} L/min`}
+  ringWidth={20}
+  needleTransitionDuration={1000}
+  needleTransition="easeElastic"
+  paddingHorizontal={0}
+  paddingVertical={0}
+  customSegmentStops={[0, 40, 60, 100, 130, 150, 180]}
+  segmentColors={[
+    "#ff0000", // 0-60: Red (Too low)
+"#ffa500",
+    "#00ff00", // 60-100: Green (Safe zone)
+    
+    //"#00ff00", // 100-100: Green (Safe zone)
+    "#ffff00", // 100-130: Yellow (Approaching danger)
+    "#ffa500", // 130-150: Orange (High warning)
+    "#ff0000"  // 150-180: Red (Too high)
+  ]}
+/>
+
         </Box>
       </CardContent>
     </Card>

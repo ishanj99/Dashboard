@@ -82,13 +82,13 @@ const App = () => {
 
   // Check alerts based on sensor data
   useEffect(() => {
-    if (unlocked && sensorData != null) {
+    if (unlocked && sensorData) {
       const alerts = [];
 
-      if (sensorData.magneticDoor.alert) {
+      if (sensorData.magneticDoor?.alert) {
         alerts.push("Door Alert");
       }
-      if (sensorData.waterFlow.alert) {
+      if (sensorData.waterFlow?.alert) {
         alerts.push("Waterflow Alert");
       }
 
