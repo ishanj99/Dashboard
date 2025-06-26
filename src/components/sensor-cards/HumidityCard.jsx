@@ -1,7 +1,6 @@
-import { Card, CardContent, Box, Typography } from '@mui/material';
-import WaterDropIcon from '@mui/icons-material/WaterDrop';
-import ReactSpeedometer from 'react-d3-speedometer';
-
+import { Card, CardContent, Box, Typography } from "@mui/material";
+import WaterDropIcon from "@mui/icons-material/WaterDrop";
+import ReactSpeedometer from "react-d3-speedometer";
 
 const HumidityCard = ({ data, roomId }) => {
   return (
@@ -31,12 +30,12 @@ const HumidityCard = ({ data, roomId }) => {
           </Typography> 
         </Box>*/}
 
-        <Box 
-          mt={5} 
-          display="flex" 
-          justifyContent="center" 
+        <Box
+          mt={5}
+          display="flex"
+          justifyContent="center"
           alignItems="center"
-          sx={{ minHeight: '150px' }}
+          sx={{ minHeight: "150px" }}
         >
           <ReactSpeedometer
             value={data.Humidity}
@@ -57,13 +56,13 @@ const HumidityCard = ({ data, roomId }) => {
             paddingHorizontal={0}
             paddingVertical={0}
             customSegmentStops={[0, 15, 25, 50, 70]}
-  segmentColors={[
-    "#ffa500", // 0°C - 20°C: Cold
-    "#ffff00", // 20°C - 22°C: Cool
-    "#00ff00", // 22°C - 24°C: Slightly Warm
-    "#ffa500", // 24°C - 26°C: Pleasant
-     // 30°C - 50°C: Hot
-  ]}
+            segmentColors={[
+              "#ffa500", // 0°C - 20°C: Cold
+              "#ffff00", // 20°C - 22°C: Cool
+              "#00ff00", // 22°C - 24°C: Slightly Warm
+              "#ffa500", // 24°C - 26°C: Pleasant
+              // 30°C - 50°C: Hot
+            ]}
           />
         </Box>
       </CardContent>
@@ -71,4 +70,4 @@ const HumidityCard = ({ data, roomId }) => {
   );
 };
 
-export default HumidityCard; 
+export default HumidityCard;

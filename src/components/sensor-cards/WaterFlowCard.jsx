@@ -1,6 +1,6 @@
-import { Card, CardContent, Box, Typography } from '@mui/material';
-import OpacityIcon from '@mui/icons-material/Opacity';
-import ReactSpeedometer from 'react-d3-speedometer';
+import { Card, CardContent, Box, Typography } from "@mui/material";
+import OpacityIcon from "@mui/icons-material/Opacity";
+import ReactSpeedometer from "react-d3-speedometer";
 
 const WaterFlowCard = ({ data, roomId }) => {
   return (
@@ -11,12 +11,12 @@ const WaterFlowCard = ({ data, roomId }) => {
           <Typography variant="h6">Water Flow</Typography>
         </Box>
         <Typography variant="h5">{data.flow_rate} L/min</Typography>
-        <Box 
-          mt={5} 
-          display="flex" 
-          justifyContent="center" 
+        <Box
+          mt={5}
+          display="flex"
+          justifyContent="center"
           alignItems="center"
-          sx={{ minHeight: '150px' }}
+          sx={{ minHeight: "150px" }}
         >
           <ReactSpeedometer
             value={data.flow_rate}
@@ -43,4 +43,4 @@ const WaterFlowCard = ({ data, roomId }) => {
   );
 };
 
-export default WaterFlowCard; 
+export default WaterFlowCard;
