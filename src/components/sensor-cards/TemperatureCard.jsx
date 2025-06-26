@@ -29,7 +29,8 @@ const TemperatureCard = ({ data, roomId }) => {
           sx={{ minHeight: "150px" }}
         >
           <ReactSpeedometer
-            value={data.Temperature}
+            //key={roomId}
+            value={data.Temperature !== null ? data.Temperature : 0}
             minValue={0}
             maxValue={50}
             segments={5}

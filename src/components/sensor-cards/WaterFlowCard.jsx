@@ -19,7 +19,8 @@ const WaterFlowCard = ({ data, roomId }) => {
           sx={{ minHeight: "150px" }}
         >
           <ReactSpeedometer
-            value={data.flow_rate}
+
+            value={data.flow_rate !== null ? data.flow_rate : 0}
             minValue={0}
             maxValue={50}
             segments={5}

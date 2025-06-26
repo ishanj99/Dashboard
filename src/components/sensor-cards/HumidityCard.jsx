@@ -38,7 +38,7 @@ const HumidityCard = ({ data, roomId }) => {
           sx={{ minHeight: "150px" }}
         >
           <ReactSpeedometer
-            value={data.Humidity}
+            value={data.Humidity !== null ? data.Humidity : 0}
             minValue={0}
             maxValue={70}
             //segments={6}
